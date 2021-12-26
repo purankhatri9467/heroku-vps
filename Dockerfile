@@ -60,7 +60,7 @@ RUN	openssl req -new -newkey rsa:4096 -days 36500 -nodes -x509 -subj "/C=IN/ST=M
 RUN wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
 RUN unzip ngrok-stable-linux-amd64.zip
 RUN rm -rf ngrok-stable-linux-amd64.zip
-RUN ./ngrok authtoken 22no8Coxh1IaY9dtnDkbFBUfcXf_6ijscgXcGaUndMvg2Wdsq
+RUN ./ngrok authtoken $NGROK_TOKEN
 
 
 ENTRYPOINT ["supervisord", "-c"]
