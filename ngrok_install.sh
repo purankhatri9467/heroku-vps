@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 if [ -z "$NGROK_TOKEN" ]
 then
 	echo "Ngrok token unavailable, skipping installation"
