@@ -1,11 +1,8 @@
 [begin] (#apps_9870)
    [submenu] (Browsers) {}
       [exec] (Midori) {midori}
-      [exec] (Firefox) {firefox}
-      [exec] (arora) {arora}
    [end]
    [submenu] (Shells) {}
-      [exec] (Terminal) {gnome-terminal}
       [exec] (Terminator) {terminator}
    [end]
 [end]

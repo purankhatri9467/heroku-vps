@@ -1,25 +1,25 @@
-FROM ubuntu:latest
-LABEL AboutImage "Ubuntu20.04_Fluxbox_NoVNC"
-LABEL Maintainer "Apoorv Vyavahare <apoorvvyavahare@pm.me>"
+FROM mcr.microsoft.com/playwright
+LABEL AboutImage "Playwright_Fluxbox_NoVNC"
+LABEL Maintainer "Mohammad Almechkor <medalmechkor@gmail.com>"
 ARG DEBIAN_FRONTEND=noninteractive
 ENV DEBIAN_FRONTEND=noninteractive \
-	#VNC Server Password
-	VNC_PASS="samplepass" \
-	#VNC Server Title(w/o spaces)
-	VNC_TITLE="Ubuntu_Desktop" \
-	#VNC Resolution(720p is preferable)
-	VNC_RESOLUTION="1280x720" \
-	#Local Display Server Port
-	DISPLAY=:0 \
-	#NoVNC Port
-	NOVNC_PORT=$PORT \
-	#Ngrok Token (It's advisable to use your personal token, else it may clash with other users & your tunnel may get terminated)
-	NGROK_TOKEN="22no8Coxh1IaY9dtnDkbFBUfcXf_6ijscgXcGaUndMvg2Wdsq" \
-	#Locale
-	LANG=en_US.UTF-8 \
-	LANGUAGE=en_US.UTF-8 \
-	LC_ALL=C.UTF-8 \
-	TZ="Asia/Kolkata"
+  #VNC Server Password
+  VNC_PASS="samplepass" \
+  #VNC Server Title(w/o spaces)
+  VNC_TITLE="Ubuntu_Desktop" \
+  #VNC Resolution(720p is preferable)
+  VNC_RESOLUTION="1280x720" \
+  #Local Display Server Port
+  DISPLAY=:0 \
+  #NoVNC Port
+  NOVNC_PORT=$PORT \
+  #Ngrok Token (It's advisable to use your personal token, else it may clash with other users & your tunnel may get terminated)
+  NGROK_TOKEN="22no8Coxh1IaY9dtnDkbFBUfcXf_6ijscgXcGaUndMvg2Wdsq" \
+  #Locale
+  LANG=en_US.UTF-8 \
+  LANGUAGE=en_US.UTF-8 \
+  LC_ALL=C.UTF-8 \
+  TZ="Asia/Kolkata"
 
 RUN rm -rf /etc/apt/sources.list
 RUN bash -c 'echo -e "deb http://archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse\ndeb-src http://archive.ubuntu.com/ubuntu/ focal main restricted universe multiverse\ndeb http://archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse\ndeb-src http://archive.ubuntu.com/ubuntu/ focal-updates main restricted universe multiverse\ndeb http://archive.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse\ndeb-src http://archive.ubuntu.com/ubuntu/ focal-security main restricted universe multiverse\ndeb http://archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse\ndeb-src http://archive.ubuntu.com/ubuntu/ focal-backports main restricted universe multiverse\ndeb http://archive.canonical.com/ubuntu focal partner\ndeb-src http://archive.canonical.com/ubuntu focal partner" >/etc/apt/sources.list'
@@ -30,10 +30,6 @@ RUN apt-get update -y
 RUN apt-get -y install openssh-client
 RUN ssh-keygen -q -t rsa -N '' -f /id_rsa
 RUN	apt-get install -y  tzdata wget git  curl vim  zip net-tools iputils-ping  build-essential 
-RUN	apt-get install -y 	python3 python3-pip python-is-python3 
-#RUN	apt-get install -y	perl ruby golang lua5.3 scala mono-complete r-base 
-#RUN	apt-get install -y	default-jre default-jdk clojure php 
-#RUN	apt-get install -y  ffmpeg
 #Install Browsers
 RUN apt-get install -y midori firefox
 
