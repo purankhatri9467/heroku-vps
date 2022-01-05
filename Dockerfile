@@ -37,7 +37,7 @@ RUN	apt-get install -y	websockify  supervisor  mousepad   pcmanfm  terminator
 RUN	apt-get install -y	x11vnc xvfb gnupg dirmngr gdebi-core  nginx novnc openvpn
 
 # Intsall librewolf
-RUN echo "deb [arch=amd64] http://deb.librewolf.net $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/librewolf.list
+RUN echo "deb [arch=amd64] http://deb.librewolf.net $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/librewolf.list
 RUN wget http://deb.librewolf.net/keyring.gpg -O /etc/apt/trusted.gpg.d/librewolf.gpg
 RUN apt update -y
 RUN apt install librewolf -y
