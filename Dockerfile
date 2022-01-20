@@ -1,5 +1,5 @@
-FROM mcr.microsoft.com/playwright
-LABEL AboutImage "Playwright_Fluxbox_NoVNC"
+FROM ubuntu
+LABEL AboutImage "Ubuntu_Fluxbox_NoVNC"
 LABEL Maintainer "Mohammad Almechkor <medalmechkor@gmail.com>"
 ARG DEBIAN_FRONTEND=noninteractive
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -31,16 +31,10 @@ RUN apt-get -y install openssh-client
 RUN ssh-keygen -q -t rsa -N '' -f /id_rsa
 RUN	apt-get install -y  tzdata wget git  curl vim  zip net-tools iputils-ping  build-essential 
 #Install Browsers
-RUN apt-get install -y midori firefox
+RUN apt-get install -y midori
 
 RUN	apt-get install -y	websockify  supervisor  mousepad   pcmanfm  terminator 
 RUN	apt-get install -y	x11vnc xvfb gnupg dirmngr gdebi-core  nginx novnc openvpn
-
-# Intsall librewolf
-RUN echo "deb [arch=amd64] http://deb.librewolf.net $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/librewolf.list
-RUN wget http://deb.librewolf.net/keyring.gpg -O /etc/apt/trusted.gpg.d/librewolf.gpg
-RUN apt update -y
-RUN apt install librewolf -y
 
 #Fluxbox
 COPY . /app
